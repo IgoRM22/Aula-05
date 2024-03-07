@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for, flash
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import FlaskForm
@@ -41,7 +41,7 @@ def index():
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'))
 
-@app.route("/")
+@app.route('/')
 def contex():
     user_agent = request.headers.get('User-Agent')
     url = request.remote_addr
