@@ -14,7 +14,7 @@ moment = Moment(app)
 
 class NameForm(FlaskForm):
     name = StringField('Qual o seu nome?', validators=[DataRequired()])
-    name = StringField('Qual o seu?', validators=[DataRequired()])
+    lastname = StringField('Qual o seu?', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 
