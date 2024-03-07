@@ -46,4 +46,4 @@ def contex():
     user_agent = request.headers.get('User-Agent')
     url = request.remote_addr
     ip = request.host_url
-    return render_template('contex.html', user_agent=user_agent, url=url, ip=ip)
+    return render_template('index.html', user_agent=user_agent, url=url, ip=ip)

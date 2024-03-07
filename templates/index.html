@@ -9,8 +9,8 @@
     <h3>A sua Insituição de ensino é {% if name %}{{ name }}{% else %}Doutor{% endif %}</h3>
     <h3>Está cursando a disciplina de {% if name %}{{ name }}{% else %}Doutor{% endif %}</h3>
     <br>
-    <h4>O IP do computador remoto é: {{ip}}</h4>
-    <h4>O host da aplicação é: {{url}}</h4> 
+    <h4>O IP do computador remoto é: {% if name %}{{ip}}{% else %}None{% endif %}</h4>
+    <h4>O host da aplicação é: {% if name %}{{url}}{% else %}None{% endif %}</h4>  
 </div>
 {{ wtf.quick_form(form) }}
 {% endblock %}
