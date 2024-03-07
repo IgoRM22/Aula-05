@@ -13,8 +13,10 @@ moment = Moment(app)
 
 
 class NameForm(FlaskForm):
-    name = StringField('Qual o seu nome?', validators=[DataRequired()])
-    lastname = StringField('Qual o seu?', validators=[DataRequired()])
+    name = StringField('Informe o seu nome:', validators=[DataRequired()])
+    lastname = StringField('Informe o seu sobrenome:', validators=[DataRequired()])
+    insname = StringField('Informe a sua Insituição de ensino:', validators=[DataRequired()])
+    discname = StringField('Informe a sua disciplina:', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 
@@ -38,3 +40,10 @@ def index():
         session['name'] = form.name.data
         return redirect(url_for('index'))
     return render_template('index.html', form=form, name=session.get('name'))
+
+@app.route("/")
+def contex():
+    user_agent = request.headers.get('User-Agent')
+    url = request.remote_addr
+    ip = request.host_url
+    return render_template('contex.html', user_agent=user_agent, url=url, ip=ip)
