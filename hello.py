@@ -32,6 +32,8 @@ def internal_server_error(e):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    url = request.remote_addr
+    ip = request.host_url
     form = NameForm()
     if form.validate_on_submit():
         old_name = session.get('name')
@@ -39,11 +41,4 @@ def index():
             flash('Looks like you have changed your name!')
         session['name'] = form.name.data
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'))
-
-@app.route('/')
-def contex():
-    user_agent = request.headers.get('User-Agent')
-    url = request.remote_addr
-    ip = request.host_url
-    return render_template('index.html', user_agent=user_agent, url=url, ip=ip)
+    return render_template('index.html', form=form, name=session.get('name'), url=url, ip=ip)
