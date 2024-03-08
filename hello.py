@@ -17,7 +17,7 @@ class NameForm(FlaskForm):
     name = StringField('Informe o seu nome:', validators=[DataRequired()])
     lastname = StringField('Informe o seu sobrenome:', validators=[DataRequired()])
     insname = StringField('Informe a sua Insituição de ensino:', validators=[DataRequired()])
-    discname = SelectField('Mounting',choices=[('DSWA5'),('DWBA4'),('Gestão de projetos')])
+    discname = SelectField('Informe a sua disciplina:',choices=[('DSWA5'),('DWBA4'),('Gestão de projetos')])
     submit = SubmitField('Submit')
 
 
