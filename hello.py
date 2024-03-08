@@ -36,6 +36,11 @@ def index():
     url = request.remote_addr
     ip = request.host_url
     form = NameForm()
-    session['name'] = form.name.data
-    session['lastname'] = form.lastname.data
-    return render_template('index.html', form=form, name=session.get('name'), name=session.get('lastname'), insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
+    if form.validate_on_submit():
+        old_name = session.get('name')
+        old_lastname = session.get('lastname')
+        if old_name is not None and old_name != form.name.data:
+            flash('Looks like you have changed your name!')
+        session['name'] = form.name.data
+        return redirect(url_for('index'))
+    return render_template('index.html', form=form, name=session.get('name'), name=session.get('name'), insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
