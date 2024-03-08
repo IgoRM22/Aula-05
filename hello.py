@@ -42,4 +42,4 @@ def index():
             flash('Looks like you have changed your name!')
         session['name'] = form.name.data
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'), name=session.get('name'), insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
+    return render_template('index.html', form=form, name=session.get('name'), url=url, ip=ip, current_time=datetime.utcnow())
