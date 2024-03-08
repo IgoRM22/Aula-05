@@ -35,6 +35,7 @@ def internal_server_error(e):
 def index():
     url = request.remote_addr
     ip = request.host_url
+    lastname=session.get('lastname')
     form = NameForm()
     if form.validate_on_submit():
         old_name = session.get('name')
@@ -42,4 +43,4 @@ def index():
             flash('Looks like you have changed your name!')
         session['name'] = form.name.data
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'), lastname=session.get('lastname'), insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
+    return render_template('index.html', form=form, name=session.get('name'), lastname=lastname, insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
