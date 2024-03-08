@@ -7,11 +7,17 @@
 <div class="page-header">
     <h1>Olá, {% if name %}{{ name }} {{ lastname }}{% else %}Estranho{% endif %}!</h1>
     <h3>A sua Insituição de ensino é {% if insname %}{{ insname }}{% else %}None{% endif %}</h3>
-    <h3>Está cursando a disciplina de {% if discname %}{{ discname }}{% else %}None{% endif %}</h3>
+    <h3>Está cursando a disciplina de <select name="select">
+        <option value="valor1">Valor 1</option>
+        <option value="valor2" selected>Valor 2</option>
+        <option value="valor3">Valor 3</option>
+      </select></h3>
     <br>
     <h4>O IP do computador remoto é: {% if name %}{{ip}}{% else %}None{% endif %}</h4>
     <h4>O host da aplicação é: {% if name %}{{url}}{% else %}None{% endif %}</h4>  
 </div>
+
+
 {{ wtf.quick_form(form) }}
 <br>
 <p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
