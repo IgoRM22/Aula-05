@@ -42,8 +42,8 @@ def index():
         old_insname = session.get('insname')
         old_discname = session.get('discname')
         session['name'] = form.name.data
-        session['lastname'] = form.name.data
-        session['insname'] = form.name.data
-        session['discname'] = form.name.data
+        session['lastname'] = form.lastname.data
+        session['insname'] = form.insname.data
+        session['discname'] = form.discname.data
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'),name=session.get('lastname'), name=session.get('insname'), name=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
+    return render_template('index.html', form=form, name=session.get('name'),lastname=session.get('lastname'), insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
