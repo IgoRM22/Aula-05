@@ -38,8 +38,12 @@ def index():
     form = NameForm()
     if form.validate_on_submit():
         old_name = session.get('name')
-        if old_name is not None and old_name != form.name.data:
-            flash('Looks like you have changed your name!')
+        old_lastname = session.get('lastname')
+        old_insname = session.get('insname')
+        old_discname = session.get('discname')
         session['name'] = form.name.data
+        session['lastname'] = form.name.data
+        session['insname'] = form.name.data
+        session['discname'] = form.name.data
         return redirect(url_for('index'))
-    return render_template('index.html', form=form, name=session.get('name'), url=url, ip=ip, current_time=datetime.utcnow())
+    return render_template('index.html', form=form, name=session.get('name'),name=session.get('lastname'), name=session.get('insname'), name=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
