@@ -35,6 +35,7 @@ def internal_server_error(e):
 def index():
     url = request.remote_addr
     ip = request.host_url
-    lastname=session.get('lastname')
     form = NameForm()
-    return render_template('index.html', form=form, name=session.get('name'), lastname=lastname, insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
+    session['name'] = form.name.data
+    session['lastname'] = form.lastname.data
+    return render_template('index.html', form=form, name=session.get('name'), name=session.get('lastname'), insname=session.get('insname'), discname=session.get('discname'), url=url, ip=ip, current_time=datetime.utcnow())
